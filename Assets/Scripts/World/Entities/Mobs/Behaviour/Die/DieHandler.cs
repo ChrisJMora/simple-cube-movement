@@ -11,8 +11,9 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
             DieController.Die += HandleDie;
         }
 
-        public void HandleDie(GameObject entity) {
-            Destroy(gameObject);
+        public void HandleDie(Animator animator, GameObject entity) {
+            animator.SetTrigger("TouchBullet");
+            Destroy(entity, 1);
         }
     }
 }

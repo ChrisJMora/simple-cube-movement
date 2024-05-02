@@ -4,10 +4,11 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
     public class DieController : MonoBehaviour {
         [Header("Dependencies")]
         public DieUtilities dieUtils;
+        public Animator animator;
 
         
         // Delegates
-        public delegate void _Die(GameObject entity);
+        public delegate void _Die(Animator animator, GameObject entity);
         // Events
         public static event _Die Die;
 
@@ -19,7 +20,7 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
         void FixedUpdate() {
             if (dieUtils.CheckDeath(transform.position)) {
                 Debug.Log("Game Over!");
-                Die?.Invoke(gameObject);
+                Die?.Invoke(animator, gameObject);
             }
         }
     }
