@@ -357,11 +357,10 @@
 "Assets/Scripts/World/Entities/Mobs/Behaviour/Die/DieController.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviour/Die/DieHandler.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviour/Die/DieUtilities.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement/MovController.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement/MovHandler.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement/MovUtilities.cs"
-"Assets/Scripts/World/Entities/Mobs/EnemyController.cs"
-"Assets/Scripts/World/Entities/Mobs/PlayerController.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Move/MovController.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Move/MovHandler.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Move/MovUtilities.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Shoot/ShootController.cs"
 -langversion:9.0
 
 /deterministic

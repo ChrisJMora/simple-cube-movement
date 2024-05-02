@@ -18,7 +18,7 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
 
         void FixedUpdate() {
             if (dieUtils.CheckDeath(transform.position)) {
-                Debug.Log("Death detected!");
+                Debug.Log("Game Over!");
                 Die?.Invoke(gameObject);
             }
         }
