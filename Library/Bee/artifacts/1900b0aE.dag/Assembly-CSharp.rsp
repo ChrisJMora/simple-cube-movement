@@ -354,9 +354,10 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/CustomAttributes/ReadOnlyAttribute.cs"
 "Assets/Scripts/CustomAttributes/ReadOnlyPropertyDrawer.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviour/MovController.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviour/MovHandler.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Die/DieHandler.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement/MovController.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement/MovHandler.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviour/Movement/MovUtilities.cs"
 "Assets/Scripts/World/Entities/Mobs/EnemyController.cs"
 "Assets/Scripts/World/Entities/Mobs/PlayerController.cs"
 -langversion:9.0
