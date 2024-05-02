@@ -9,6 +9,7 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
         }
         
         public void UpdateEntityPosition(Transform entity, Transform target, float speed) {
+            Debug.Log("Update entity position");
             entity.SetPositionAndRotation(
                 Vector3.MoveTowards(entity.position, target.position,
                 speed * Time.fixedDeltaTime), target.rotation);
@@ -35,6 +36,13 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
 
         public bool CheckGround(Transform groundRef) {
             return Physics.CheckSphere(groundRef.position, .2f, wall);
+        }
+
+        public bool CheckGround(Vector3 origin, string tag) {
+            RaycastHit hit;
+            if (Physics.Raycast(origin, Vector3.down, out hit, 1f))
+                return hit.collider.CompareTag(tag);
+            return false;
         }
 
         public void MoveSideWays(Transform walkRef, Transform groundRef, float distance) {

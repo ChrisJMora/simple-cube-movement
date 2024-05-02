@@ -1,9 +1,10 @@
+using Scripts.World.Entities.Mobs.Behaviour.Move;
 using UnityEngine;
 
 namespace Scripts.World.Entities.Mobs.Behaviour.Die {
     public class DieController : MonoBehaviour {
         [Header("Dependencies")]
-        public DieUtilities dieUtils;
+        public MovUtilities movUtils;
         public Animator animator;
 
         
@@ -13,12 +14,12 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
         public static event _Die Die;
 
         void Start() {
-            dieUtils = new();
+            movUtils = new();
             gameObject.AddComponent<DieHandler>();
         }
 
         void FixedUpdate() {
-            if (dieUtils.CheckDeath(transform.position)) {
+            if (movUtils.CheckGround(transform.position, "LethalBlock")) {
                 Debug.Log("Game Over!");
                 Die?.Invoke(animator, gameObject);
             }

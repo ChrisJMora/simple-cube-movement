@@ -70,7 +70,8 @@
     <Compile Include="Assets\Scripts\CustomAttributes\ReadOnlyPropertyDrawer.cs" />
     <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\MovUtilities.cs" />
     <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Shoot\ShootController.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Die\DieUtilities.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Win\WinController.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Win\WinHandler.cs" />
     <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\MovController.cs" />
     <Compile Include="Assets\Scripts\CustomAttributes\ReadOnlyAttribute.cs" />
   </ItemGroup>
