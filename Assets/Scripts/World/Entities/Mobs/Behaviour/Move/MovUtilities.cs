@@ -9,7 +9,6 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
         }
         
         public void UpdateEntityPosition(Transform entity, Transform target, float speed) {
-            Debug.Log("Update entity position");
             entity.SetPositionAndRotation(
                 Vector3.MoveTowards(entity.position, target.position,
                 speed * Time.fixedDeltaTime), target.rotation);
@@ -46,7 +45,6 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
         }
 
         public void MoveSideWays(Transform walkRef, Transform groundRef, float distance) {
-            Debug.Log("Move sideways");
             if (distance == 1f) 
                 walkRef.rotation = Quaternion.Euler(0f, 90f, 0f);
             else 
@@ -56,7 +54,6 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
         }
 
         public void MoveForward(Transform walkRef, Transform groundRef, float distance) {
-            Debug.Log("Move forward");
             if (distance == 1f) 
                 walkRef.rotation = Quaternion.Euler(0f, 0f, 0f);
             else 

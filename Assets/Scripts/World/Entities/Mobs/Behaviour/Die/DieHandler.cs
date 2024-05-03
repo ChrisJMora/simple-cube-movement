@@ -1,19 +1,32 @@
+using Scripts.World.Entities.Mobs.Behaviour.Move;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Scripts.World.Entities.Mobs.Behaviour.Die {
     public class DieHandler : MonoBehaviour {
+        
+        public Animator animator;
 
-        void OnEnable() {
+        private void Start() {
+            animator = GetComponent<Animator>();
+        }
+
+        private void OnEnable() {
             DieController.Die += HandleDie;
         }
 
-        void OnDisable() {
-            DieController.Die += HandleDie;
+        private void OnDisable() {
+            DieController.Die -= HandleDie;
         }
 
-        public void HandleDie(Animator animator, GameObject entity) {
+        private void HandleDie() {
+            gameObject.GetComponentInParent<MovController>().enabled = false;
             animator.SetTrigger("TouchBullet");
-            Destroy(entity, 1);
+        }
+
+        public void RestartScene() {
+            Debug.Log("Restarting scene...");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

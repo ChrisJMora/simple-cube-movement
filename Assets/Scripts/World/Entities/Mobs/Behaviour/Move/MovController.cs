@@ -7,16 +7,16 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
         public float speed = 5f;
 
         [Header("References")]
-        [ReadOnly] public Transform walkRef;
-        [ReadOnly] public Transform groundRef;
+        [SerializeField] public Transform wallRef;
+        [SerializeField] public Transform groundRef;
 
         [Header("Dependencies")]
         [ReadOnly] public MovUtilities movUtils;
 
         // Delegates
-        public delegate void _Jump(Transform entity, Transform walkRef,
+        public delegate void _Jump(Transform entity, Transform wallRef,
          Transform groundRef, float speed);
-        public delegate void _Fall(Transform entity, Transform walkRef,
+        public delegate void _Fall(Transform entity, Transform wallRef,
          Transform groundRef, float speed);
         // Events
         public static event _Jump Jump;
@@ -25,22 +25,17 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move {
         void Start() {
             movUtils = new();
             gameObject.AddComponent<MovHandler>();
-            walkRef = new GameObject("Walk Reference").transform;
-            groundRef = new GameObject("Ground Reference").transform;
-            groundRef.position += Vector3.down;
         }
 
         void FixedUpdate() {
             float xDistance = Input.GetAxisRaw("Horizontal");
             float zDistance = Input.GetAxisRaw("Vertical");
-            Transform target = movUtils.MoveReferences(transform, walkRef, groundRef,
+            Transform target = movUtils.MoveReferences(transform, wallRef, groundRef,
              xDistance, zDistance);
             if (movUtils.CheckWall(target.position)) {
-                Debug.Log("Wall detected!");
-                Jump?.Invoke(transform, walkRef, groundRef, speed);
+                Jump?.Invoke(transform, wallRef, groundRef, speed);
             } else if (!movUtils.CheckGround(groundRef)) {
-                Debug.Log("Ground not detected!");
-                Fall?.Invoke(transform, walkRef, groundRef, speed);
+                Fall?.Invoke(transform, wallRef, groundRef, speed);
             } else {
                 movUtils.UpdateEntityPosition(transform, target, speed);
             }

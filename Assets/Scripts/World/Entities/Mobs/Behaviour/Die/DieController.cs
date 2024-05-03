@@ -5,23 +5,21 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
     public class DieController : MonoBehaviour {
         [Header("Dependencies")]
         public MovUtilities movUtils;
-        public Animator animator;
-
+        public DieHandler dieHandler;
         
         // Delegates
-        public delegate void _Die(Animator animator, GameObject entity);
+        public delegate void _Die();
         // Events
         public static event _Die Die;
 
         void Start() {
             movUtils = new();
-            gameObject.AddComponent<DieHandler>();
         }
 
         void FixedUpdate() {
             if (movUtils.CheckGround(transform.position, "LethalBlock")) {
                 Debug.Log("Game Over!");
-                Die?.Invoke(animator, gameObject);
+                Die?.Invoke();
             }
         }
     }
