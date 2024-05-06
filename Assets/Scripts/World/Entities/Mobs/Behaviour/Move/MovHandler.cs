@@ -3,13 +3,13 @@ using UnityEngine;
 namespace Scripts.World.Entities.Mobs.Behaviour.Move {
     public class MovHandler : MonoBehaviour{
         void OnEnable() {
-            MovController.Jump += HandleJump;
-            MovController.Fall += HandleFall;
+            // MovController.Jump += HandleJump;
+            // MovController.Fall += HandleFall;
         }
 
         void OnDisable() {
-            MovController.Jump -= HandleJump;
-            MovController.Fall -= HandleFall;
+            // MovController.Jump -= HandleJump;
+            // MovController.Fall -= HandleFall;
         }
 
         void HandleJump(Transform entity, Transform movePoint, Transform groundCheck, float speed) {

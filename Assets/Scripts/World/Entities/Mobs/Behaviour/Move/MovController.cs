@@ -1,44 +1,57 @@
 using UnityEngine;
-using Scripts.CustomAttributes;
 
-namespace Scripts.World.Entities.Mobs.Behaviour.Move {
-    public class MovController : MonoBehaviour {
+namespace Scripts.World.Entities.Mobs.Behaviour.Move
+{
+    public class MovController : MonoBehaviour
+    {
         [Header("Properties")]
-        public float speed = 5f;
+        public float speed;
+        public float distance;
 
-        [Header("References")]
-        [SerializeField] public Transform wallRef;
-        [SerializeField] public Transform groundRef;
+        // [Header("References")]
+        // [SerializeField] public Transform wallRef;
+        // [SerializeField] public Transform groundRef;
 
         [Header("Dependencies")]
-        [ReadOnly] public MovUtilities movUtils;
+        [Tooltip("The library that handles the movement of the entity.")]
+        [SerializeField] MovUtilities movUtils;
 
         // Delegates
-        public delegate void _Jump(Transform entity, Transform wallRef,
-         Transform groundRef, float speed);
-        public delegate void _Fall(Transform entity, Transform wallRef,
-         Transform groundRef, float speed);
-        // Events
-        public static event _Jump Jump;
-        public static event _Fall Fall;
+        // public delegate void _Jump(Transform entity, Transform wallRef,
+        //  Transform groundRef, float speed);
+        // public delegate void _Fall(Transform entity, Transform wallRef,
+        //  Transform groundRef, float speed);
+        // // Events
+        // public static event _Jump Jump;
+        // public static event _Fall Fall;
 
-        void Start() {
-            movUtils = new();
+        void Awake()
+        {
+            movUtils = new(transform.position, speed, distance);
             gameObject.AddComponent<MovHandler>();
         }
 
-        void FixedUpdate() {
-            float xDistance = Input.GetAxisRaw("Horizontal");
-            float zDistance = Input.GetAxisRaw("Vertical");
-            Transform target = movUtils.MoveReferences(transform, wallRef, groundRef,
-             xDistance, zDistance);
-            if (movUtils.CheckWall(target.position)) {
-                Jump?.Invoke(transform, wallRef, groundRef, speed);
-            } else if (!movUtils.CheckGround(groundRef)) {
-                Fall?.Invoke(transform, wallRef, groundRef, speed);
-            } else {
-                movUtils.UpdateEntityPosition(transform, target, speed);
-            }
+        void OnDrawGizmosSelected()
+        {
+            // Draw a wireframe sphere in the Scene view
+            Debug.Log("Drawing Gizmos");
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(movUtils.targetPosition, .05f);
+        }
+
+        void Update()
+        {
+            // Debug.Log($"Current: {movUtils.current}, Target: {movUtils.target}");
+            float xInput = Input.GetAxisRaw("Horizontal");
+            float zInput = Input.GetAxisRaw("Vertical");
+
+            if (movUtils.CheckWall(movUtils.targetPosition))
+                movUtils.Jump(transform);
+            else
+            if (!movUtils.CheckWall(movUtils.targetPosition + Vector3.down))
+                movUtils.Fall(transform);
+            if (!movUtils.isJumping && !movUtils.isFalling)
+                movUtils.Move(transform, xInput, zInput);
         }
     }
 }

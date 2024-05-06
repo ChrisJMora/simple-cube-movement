@@ -13,14 +13,14 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Die {
         public static event _Die Die;
 
         void Start() {
-            movUtils = new();
+            // movUtils = new();
         }
 
         void FixedUpdate() {
-            if (movUtils.CheckGround(transform.position, "LethalBlock")) {
-                Debug.Log("Game Over!");
-                Die?.Invoke();
-            }
+            // if (movUtils.CheckBlock(transform.position, transform.position + Vector3.down, "LethalBlock")) {
+            //     Debug.Log("Game Over!");
+            //     Die?.Invoke();
+            // }
         }
     }
 }

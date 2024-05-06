@@ -13,14 +13,14 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Win {
         public static event _Win Win;
 
         void Start() {
-            movUtils = new();
+            // movUtils = new();
         }
 
         void FixedUpdate() {
-            if (movUtils.CheckGround(transform.position, "WinBlock")) {
-                Debug.Log("You win!");
-                Win?.Invoke();
-            }
+            // if (movUtils.CheckBlock(transform.position, transform.position + Vector3.down, "WinBlock")) {
+            //     Debug.Log("You win!");
+            //     Win?.Invoke();
+            // }
         }
     }
 }
