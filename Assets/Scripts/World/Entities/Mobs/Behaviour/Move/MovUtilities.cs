@@ -7,8 +7,6 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move
     public class MovUtilities
     {
         [Header("Movement Properties")]
-        [ReadOnly][SerializeField] float speed;
-        [ReadOnly][SerializeField] float distance;
         [ReadOnly] public Vector3 direction;
 
         [Header("Referencial Points")]
@@ -24,17 +22,15 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move
 
         public Vector3 CurrentPosition => targetPosition - direction;
 
-        public MovUtilities(Vector3 origin, float speed, float distance)
+        public MovUtilities(Vector3 origin)
         {
-            this.speed = speed;
-            this.distance = distance;
             currentPosition = destinyPosition = origin;
             currentHeight = 0;
         }
 
-        public void Move(Transform entity, float xInput, float zInput)
+        public void Move(Transform entity, float distance, float speed, float xInput, float zInput)
         {
-            UpdateEntityPosition(entity, targetPosition); // Update the entity position
+            UpdateEntityPosition(entity, speed, targetPosition); // Update the entity position
             if (Vector3.Distance(currentPosition, targetPosition) <= .05f && !ReachDestination)
                 targetPosition += direction;
             if (Vector3.Distance(targetPosition, destinyPosition) <= .05f)
@@ -46,10 +42,10 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move
                 ReachDestination = false;
             }
         }
-        public void Jump(Transform entity)
+        public void Jump(Transform entity, float speed)
         {
             isJumping = true;
-            UpdateEntityPosition(entity, currentPosition + Vector3.up);
+            UpdateEntityPosition(entity, speed, currentPosition + Vector3.up);
             if (entity.position.y >= currentHeight + 1f)
             {
                 currentHeight += 1;
@@ -58,10 +54,10 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move
                 isJumping = false;
             }
         }
-        public void Fall(Transform entity)
+        public void Fall(Transform entity, float speed)
         {
             isFalling = true;
-            UpdateEntityPosition(entity, targetPosition);
+            UpdateEntityPosition(entity, speed, targetPosition);
             if (Vector3.Distance(entity.position, targetPosition) <= .05f)
             {
                 currentHeight -= 1;
@@ -74,7 +70,7 @@ namespace Scripts.World.Entities.Mobs.Behaviour.Move
         {
             return Physics.CheckSphere(target, .05f, LayerMask.GetMask("Wall"));
         }
-        private void UpdateEntityPosition(Transform entity, Vector3 targetPosition)
+        private void UpdateEntityPosition(Transform entity, float speed, Vector3 targetPosition)
         {
             currentPosition = entity.position;
             entity.position = Vector3.MoveTowards(currentPosition, targetPosition, speed * Time.deltaTime);
