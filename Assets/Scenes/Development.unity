@@ -595,12 +595,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1593955967010899835, guid: a2b3bc583f22d90458c47d7e30eefc10, type: 3}
       propertyPath: speed
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1593955967010899835, guid: a2b3bc583f22d90458c47d7e30eefc10, type: 3}
       propertyPath: distance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1593955967010899835, guid: a2b3bc583f22d90458c47d7e30eefc10, type: 3}
+      propertyPath: movPropertiesData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7cfc1ee654db82e4380f3f443fa13937, type: 2}
+    - target: {fileID: 1593955967010899835, guid: a2b3bc583f22d90458c47d7e30eefc10, type: 3}
+      propertyPath: movementData.movPropertiesData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7cfc1ee654db82e4380f3f443fa13937, type: 2}
     - target: {fileID: 4681670239558865205, guid: a2b3bc583f22d90458c47d7e30eefc10, type: 3}
       propertyPath: m_Icon
       value: 

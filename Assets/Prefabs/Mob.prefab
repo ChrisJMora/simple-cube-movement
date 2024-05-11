@@ -201,14 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movUtils:
-    direction: {x: 0, y: 0, z: 0}
     currentPosition: {x: 0, y: 0, z: 0}
     targetPosition: {x: 0, y: 0, z: 0}
     destinyPosition: {x: 0, y: 0, z: 0}
-    currentHeight: 0
     ReachDestination: 0
-    isJumping: 0
-    isFalling: 0
   dieHandler: {fileID: 3822829805980241317}
 --- !u!114 &9041125825078315374
 MonoBehaviour:
@@ -223,14 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movUtils:
-    direction: {x: 0, y: 0, z: 0}
     currentPosition: {x: 0, y: 0, z: 0}
     targetPosition: {x: 0, y: 0, z: 0}
     destinyPosition: {x: 0, y: 0, z: 0}
-    currentHeight: 0
     ReachDestination: 0
-    isJumping: 0
-    isFalling: 0
   winHandler: {fileID: 742408088797544232}
 --- !u!114 &3822829805980241317
 MonoBehaviour:
@@ -325,14 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b24138b5fa5ad84881367897d2e61e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  distance: 1
-  movUtils:
-    direction: {x: 0, y: 0, z: 0}
-    currentPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: 0, y: 0, z: 0}
-    destinyPosition: {x: 0, y: 0, z: 0}
-    currentHeight: 0
-    ReachDestination: 0
-    isJumping: 0
-    isFalling: 0
+  movementData:
+    _movPropertiesData: {fileID: 11400000, guid: 7cfc1ee654db82e4380f3f443fa13937, type: 2}
+    IsJumping: 0
+    IsFalling: 0
