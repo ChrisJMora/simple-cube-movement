@@ -200,11 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfcdb23d0dfe194e819c3fb7b03a233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movUtils:
-    currentPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: 0, y: 0, z: 0}
-    destinyPosition: {x: 0, y: 0, z: 0}
-    ReachDestination: 0
   dieHandler: {fileID: 3822829805980241317}
 --- !u!114 &9041125825078315374
 MonoBehaviour:
@@ -218,11 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77a2d4fbab6b6844b30e32336923863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movUtils:
-    currentPosition: {x: 0, y: 0, z: 0}
-    targetPosition: {x: 0, y: 0, z: 0}
-    destinyPosition: {x: 0, y: 0, z: 0}
-    ReachDestination: 0
   winHandler: {fileID: 742408088797544232}
 --- !u!114 &3822829805980241317
 MonoBehaviour:
@@ -280,7 +270,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336988491097053454}
-  - component: {fileID: 1593955967010899835}
+  - component: {fileID: 3015565105197684980}
+  - component: {fileID: 6049613406576014633}
+  - component: {fileID: 3269532144813446094}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -305,7 +297,7 @@ Transform:
   - {fileID: 6376652109450689594}
   m_Father: {fileID: 4948805704879602691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1593955967010899835
+--- !u!114 &3015565105197684980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,10 +306,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 8921541475849521272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b24138b5fa5ad84881367897d2e61e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0024c7c17aecabe4c9a0da2253dc3d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementData:
-    _movPropertiesData: {fileID: 11400000, guid: 7cfc1ee654db82e4380f3f443fa13937, type: 2}
-    IsJumping: 0
-    IsFalling: 0
+  _entityTransform: {fileID: 1336988491097053454}
+  _movPropertiesData: {fileID: 11400000, guid: 7498234c34489eb43a984c0869df7d81, type: 2}
+  _currentSpeed: 0
+  _positionData:
+    currentPosition: {x: 0, y: 0, z: 0}
+    targetPosition: {x: 0, y: 0, z: 0}
+    destinyPosition: {x: 0, y: 0, z: 0}
+    currentHeight: 0
+  _trayectoryData:
+    direction: {x: 0, y: 0, z: 0}
+    orientation: {x: 0, y: 0, z: 0, w: 0}
+  _isJumping: 0
+  _isFalling: 0
+--- !u!114 &6049613406576014633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921541475849521272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0973608a0a945db4790cf91e4ce3318b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movData: {fileID: 3015565105197684980}
+--- !u!114 &3269532144813446094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921541475849521272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0ec995352b45b49aa04d60fd9ad766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movData: {fileID: 3015565105197684980}

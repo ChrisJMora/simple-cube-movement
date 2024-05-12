@@ -61,25 +61,28 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\PositionManager.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\Data\EntityPositionData.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\MovementIn2D.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Die\DieController.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\Data\EntityMovData.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\Data\EntityTrayectoryData.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\Data\MovPropertiesData.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Die\DieHandler.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\Data\EntityPositionData.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Types\SurfaceMotion\KeyInputWalk.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Types\DepthMotion\DepthMovement.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\MovementIn2D.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\Data\EntityMovData.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Types\DepthMotion\NormalJump.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Win\WinHandler.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\Data\EntityTrayectoryData.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\MovementIn3D.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Die\DieController.cs" />
     <Compile Include="Assets\Scripts\CustomAttributes\ReadOnlyPropertyDrawer.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\Data\MovInputData.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Shoot\ShootController.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Win\WinController.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\CollisionDetection.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Win\WinHandler.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Data\EntityData.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\OrientationManager.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\MovController.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Types\SurfaceMotion\SurfaceMovement.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\CollisionDetection.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Types\SurfaceMotion\RandomInputWalk.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Die\DieHandler.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Win\WinController.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\PositionManager.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Shoot\ShootController.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\OrientationManager.cs" />
     <Compile Include="Assets\Scripts\CustomAttributes\ReadOnlyAttribute.cs" />
-    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviour\Move\Utils\MovementIn3D.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Behaviours\Movement\Utils\Data\MovPropertiesData.cs" />
+    <Compile Include="Assets\Scripts\World\Entities\Mobs\Utils\Data\MobData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1003,8 +1006,7 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
