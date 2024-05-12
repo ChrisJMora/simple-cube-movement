@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Scripts.World.Entities.Mobs.Behaviour.Die {
+namespace Scripts.World.Entities.Mobs.Behaviour.Death {
     public class DieController : MonoBehaviour {
         [Header("Dependencies")]
         // public MovUtilities movUtils;
-        public DieHandler dieHandler;
+        public DeathHandler dieHandler;
         
         // Delegates
         public delegate void _Die();

@@ -7,7 +7,7 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils
     {
         private OrientationManager() { } // Private constructor to prevent instantiation
 
-        public static void GetDirection(EntityTrayectoryData entityTrayectoryData, Vector2 inputData)
+        public static void GetDirection(TrayectoryData entityTrayectoryData, Vector2 inputData)
         {
             if (Mathf.Abs(inputData.x) == 1f)
             {
@@ -23,7 +23,7 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils
             }
         }
 
-        public static void GetOrientation(EntityTrayectoryData entityTrayectoryData, Vector2 inputData)
+        public static void GetOrientation(TrayectoryData entityTrayectoryData, Vector2 inputData)
         {
             if (Mathf.Abs(inputData.x) == 1f)
             {

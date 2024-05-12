@@ -4,14 +4,14 @@ using Scripts.CustomAttributes;
 namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils.Data 
 {
     [System.Serializable]
-    public class EntityPositionData
+    public class PositionData
     {
         [SerializeField] [ReadOnly] private Vector3 currentPosition;
         [SerializeField] [ReadOnly] private Vector3 targetPosition;
         [SerializeField] [ReadOnly] private Vector3 destinyPosition;
         [SerializeField] [ReadOnly] private float currentHeight;
 
-        public EntityPositionData(Transform entityTransform)
+        public PositionData(Transform entityTransform)
         {
             CurrentPosition = TargetPosition = DestinyPosition = entityTransform.position;
             CurrentHeight = CurrentPosition.y;

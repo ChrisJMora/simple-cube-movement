@@ -4,12 +4,12 @@ using Scripts.CustomAttributes;
 namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils.Data
 {
     [System.Serializable]
-    public class EntityTrayectoryData
+    public class TrayectoryData
     {
         [SerializeField] [ReadOnly] private Vector3 direction;
         [SerializeField] [ReadOnly] private Quaternion orientation;
 
-        public EntityTrayectoryData(Transform entityTransform)
+        public TrayectoryData(Transform entityTransform)
         {
             Direction = entityTransform.forward;
             Orientation = entityTransform.rotation;

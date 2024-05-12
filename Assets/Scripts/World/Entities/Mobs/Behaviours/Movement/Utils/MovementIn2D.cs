@@ -6,11 +6,11 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils {
     {
         private MovementIn2D() { } // Private constructor to prevent instantiation
 
-        public static void Move(EntityMovData movData, Vector2 inputData)
+        public static void Move(MovementData movData, Vector2 inputData)
         {
             bool anyInput = inputData.x != 0 || inputData.y != 0;
             MakeStepForward(movData);
-            if (anyInput)
+            if (anyInput && movData.IsMoving)
             {
                 FigureOutTrayectory(movData, inputData);
                 LookForNewDestination(movData);
@@ -18,9 +18,9 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils {
             movData.transform.position = movData.PositionData.CurrentPosition;
         }
 
-        private static void MakeStepForward(EntityMovData movData)
+        private static void MakeStepForward(MovementData movData)
         {
-            EntityPositionData positionData = movData.PositionData;
+            PositionData positionData = movData.PositionData;
             Vector3 targetPosition = positionData.TargetPosition;
             Vector3 direction = movData.TrayectoryData.Direction;
             float speed = movData.CurrentSpeed;
@@ -29,9 +29,9 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils {
             PositionManager.UpdateCurrentPosition(positionData, targetPosition, speed);
         }
 
-        private static void FigureOutTrayectory(EntityMovData movData, Vector2 inputData)
+        private static void FigureOutTrayectory(MovementData movData, Vector2 inputData)
         {
-            EntityTrayectoryData trayectoryData = movData.TrayectoryData;
+            TrayectoryData trayectoryData = movData.TrayectoryData;
             Vector3 currentPosition = movData.PositionData.CurrentPosition;
             Vector3 destinyPosition = movData.PositionData.DestinyPosition;
             bool reachDestiny = PositionManager.ReachPosition(currentPosition, destinyPosition);
@@ -41,15 +41,24 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils {
                 OrientationManager.GetOrientation(trayectoryData, inputData);
                 OrientationManager.GetDirection(trayectoryData, inputData);
             }
+            movData.transform.rotation = trayectoryData.Orientation;
         }
 
-        private static void LookForNewDestination(EntityMovData movData)
+        private static void LookForNewDestination(MovementData movData)
         {
-            EntityPositionData positionData = movData.PositionData;
+            PositionData positionData = movData.PositionData;
             Vector3 direction = movData.TrayectoryData.Direction;
             float distance = movData.MovPropertiesData.Distance;
 
             PositionManager.GetNextDestinyPosition(positionData, direction, distance);
+        }
+
+        public static void Stop(MovementData movData)
+        {
+            Vector3 targetPosition = movData.PositionData.TargetPosition;
+
+            movData.PositionData.DestinyPosition = targetPosition;
+            movData.IsMoving = false;
         }
     }
 }

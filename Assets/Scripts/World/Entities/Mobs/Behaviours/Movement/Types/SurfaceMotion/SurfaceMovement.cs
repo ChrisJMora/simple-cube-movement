@@ -5,7 +5,7 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Types.SurfaceMotion
 {
     public abstract class SurfaceMovement : MonoBehaviour
     {
-        [SerializeField] protected EntityMovData movData;
+        [SerializeField] protected MovementData movData;
 
         private void Update()
         {
@@ -14,9 +14,5 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Types.SurfaceMotion
 
         public abstract void Move();
         public abstract void Run();
-        public void Stop()
-        {
-            movData.PositionData.DestinyPosition = movData.PositionData.TargetPosition;
-        }
     }
 }

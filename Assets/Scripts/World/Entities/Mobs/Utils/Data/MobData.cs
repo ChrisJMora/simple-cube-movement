@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.World.Entities.Mobs.Utils.Data
+namespace Scripts.World.Entities.Mobs.Utils.Data
 {
-    [CreateAssetMenu(fileName = "MobData", menuName = "new MobData", order = 1)]
-    public class MobData : ScriptableObject
+    public class MobData : MonoBehaviour
     {
-        [SerializeField] private float _health;
-        [SerializeField] private float _armor;
-        [SerializeField] private float _damage;
+        [SerializeField] private MobProperties _mobProperties;
+        [SerializeField] private float _currentHealth;
+
+        private void Awake()
+        {
+            _currentHealth = _mobProperties.Health;
+        }
+
+        public MobProperties MobProperties { get => _mobProperties; set => _mobProperties = value; }
+        public float CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
     }
 }

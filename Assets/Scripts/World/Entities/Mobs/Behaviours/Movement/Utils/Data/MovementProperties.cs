@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils.Data 
 {
     [CreateAssetMenu(fileName = "MovPropertiesData", menuName = "new MovPropertiesData", order = 1)]
-    public class MovPropertiesData : ScriptableObject
+    public class MovementProperties : ScriptableObject
     {
         [SerializeField] private float _minSpeed;
         [SerializeField] private float _speed;

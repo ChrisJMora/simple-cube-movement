@@ -8,9 +8,9 @@ namespace Assets.Scripts.World.Entities.Mobs.Behaviours.Movement.Utils
     {
         private MovementIn3D() { } // Private constructor to prevent instantiation
 
-        public static void Jump(EntityMovData movData)
+        public static void Jump(MovementData movData)
         {
-            EntityPositionData positionData = movData.PositionData;
+            PositionData positionData = movData.PositionData;
             Vector3 currentPosition = positionData.CurrentPosition;
             Vector3 currentTopPosition = positionData.CurrentPosition + Vector3.up;
             float targetHeight = positionData.CurrentHeight + movData.MovPropertiesData.JumpHeight;
@@ -23,9 +23,9 @@ namespace Assets.Scripts.World.Entities.Mobs.Behaviours.Movement.Utils
             movData.transform.position = positionData.CurrentPosition;
         }
 
-        private static void FinishJump(EntityMovData movData)
+        private static void FinishJump(MovementData movData)
         {
-            EntityPositionData posData = movData.PositionData;
+            PositionData posData = movData.PositionData;
             float jumpHeight = movData.MovPropertiesData.JumpHeight;
 
             posData.CurrentHeight += jumpHeight;
@@ -34,9 +34,9 @@ namespace Assets.Scripts.World.Entities.Mobs.Behaviours.Movement.Utils
             movData.IsJumping = false;
         }
 
-        public static void Fall(EntityMovData movData)
+        public static void Fall(MovementData movData)
         {
-            EntityPositionData positionData = movData.PositionData;
+            PositionData positionData = movData.PositionData;
             Vector3 currentPosition = positionData.CurrentPosition;
             Vector3 targetPosition = positionData.TargetPosition;
             float speed = movData.MovPropertiesData.Speed;
@@ -48,9 +48,9 @@ namespace Assets.Scripts.World.Entities.Mobs.Behaviours.Movement.Utils
             movData.transform.position = positionData.CurrentPosition;
         }
 
-        private static void FinishFall(EntityMovData movData)
+        private static void FinishFall(MovementData movData)
         {
-            EntityPositionData posData = movData.PositionData;
+            PositionData posData = movData.PositionData;
             float jumpHeight = movData.MovPropertiesData.JumpHeight;
 
             posData.CurrentHeight -= jumpHeight;

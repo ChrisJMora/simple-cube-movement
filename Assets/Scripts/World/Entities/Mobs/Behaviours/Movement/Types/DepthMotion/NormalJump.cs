@@ -9,14 +9,14 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Types.DepthMotion
     {
         public override void Jump()
         {
-            EntityPositionData positionData = movData.PositionData;
+            PositionData positionData = movData.PositionData;
             bool wallDetected = CollisionDetection.BlockDetected(positionData.TargetPosition, "Wall");
             if (wallDetected) MovementIn3D.Jump(movData);
         }
 
         public override void Fall()
         {
-            EntityPositionData positionData = movData.PositionData;
+            PositionData positionData = movData.PositionData;
             bool floorDetected = CollisionDetection.BlockDetected(positionData.TargetPosition + Vector3.down, "Wall");
             if (!floorDetected) MovementIn3D.Fall(movData);
         }
