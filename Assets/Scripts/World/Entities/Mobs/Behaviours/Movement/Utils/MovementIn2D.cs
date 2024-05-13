@@ -10,12 +10,26 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils {
         {
             bool anyInput = inputData.x != 0 || inputData.y != 0;
             MakeStepForward(movData);
-            if (anyInput && movData.IsMoving)
+            if (anyInput && !movData.IsStunned)
             {
                 FigureOutTrayectory(movData, inputData);
                 LookForNewDestination(movData);
             }
             movData.transform.position = movData.PositionData.CurrentPosition;
+        }
+
+        public static void Bounce(MovementData movData, Vector3 collisionDirection)
+        {
+            movData.TrayectoryData.Direction = collisionDirection;
+            movData.PositionData.DestinyPosition += collisionDirection;
+        }
+
+        public static void Stop(MovementData movData)
+        {
+            Vector3 targetPosition = movData.PositionData.TargetPosition;
+
+            movData.PositionData.DestinyPosition = targetPosition;
+            movData.IsStunned = true;
         }
 
         private static void MakeStepForward(MovementData movData)
@@ -51,14 +65,6 @@ namespace Scripts.World.Entities.Mobs.Behaviours.Movement.Utils {
             float distance = movData.MovPropertiesData.Distance;
 
             PositionManager.GetNextDestinyPosition(positionData, direction, distance);
-        }
-
-        public static void Stop(MovementData movData)
-        {
-            Vector3 targetPosition = movData.PositionData.TargetPosition;
-
-            movData.PositionData.DestinyPosition = targetPosition;
-            movData.IsMoving = false;
         }
     }
 }

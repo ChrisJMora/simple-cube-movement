@@ -354,10 +354,16 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/CustomAttributes/ReadOnlyAttribute.cs"
 "Assets/Scripts/CustomAttributes/ReadOnlyPropertyDrawer.cs"
+"Assets/Scripts/Game/Camera/CameraController.cs"
+"Assets/Scripts/Game/GameController.cs"
+"Assets/Scripts/Game/GameData.cs"
+"Assets/Scripts/Game/WinHandler.cs"
+"Assets/Scripts/World/Entities/Collectables/Behaviours/PickUp/PickUpController.cs"
+"Assets/Scripts/World/Entities/Collectables/Utils/Data/CollectableProperties.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Attack/AttackController.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Attack/Utils/Data/AttackData.cs"
+"Assets/Scripts/World/Entities/Mobs/Behaviours/BounceWithOthers/BounceController.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Death/DeathHandler.cs"
-"Assets/Scripts/World/Entities/Mobs/Behaviours/Death/DieController.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Movement/Types/DepthMotion/DepthMovement.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Movement/Types/DepthMotion/NormalJump.cs"
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Movement/Types/SurfaceMotion/KeyInputWalk.cs"
@@ -378,6 +384,7 @@
 "Assets/Scripts/World/Entities/Mobs/Behaviours/Win/WinHandler.cs"
 "Assets/Scripts/World/Entities/Mobs/Utils/Data/MobData.cs"
 "Assets/Scripts/World/Entities/Mobs/Utils/Data/MobProperties.cs"
+"Assets/Scripts/World/Entities/Spawn/Behaviours/SpawnEntity/SpawnEntityController.cs"
 -langversion:9.0
 
 /deterministic

@@ -4,7 +4,7 @@ using Scripts.World.Entities.Mobs.Behaviours.Movement.Utils;
 using Scripts.World.Entities.Mobs.Behaviours.Movement.Utils.Data;
 using Scripts.World.Entities.Mobs.Utils.Data;
 using UnityEngine;
-using Unity.VisualScripting;
+using Scripts.World.Entities.Collectables.Utils.Data;
 
 namespace Scripts.World.Entities.Mobs.Behaviours.ReceiveDamage
 {
@@ -12,41 +12,37 @@ namespace Scripts.World.Entities.Mobs.Behaviours.ReceiveDamage
     {
         [Header("Dependencies")]
         [SerializeField] private MobData _mobData;
+        [SerializeField] private MobProperties _mobProperties;
         [SerializeField] private MovementData _movData;
+        [SerializeField] private Animator _entityAnimator;
 
-        private readonly DeathHandler _deathHandler;
+        [SerializeField] private DeathHandler _deathHandler;
 
-        public delegate void _Die(GameObject entity);
+        public delegate void _Die(GameObject entity, Animator animator);
         public static event _Die Die;
-
-        private void Start()
-        {
-            gameObject.AddComponent<DeathHandler>();
-        }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("EntityAttack"))
+            if (collision.gameObject.CompareTag("EntityAttack") && !_movData.IsStunned)
             {
+                _entityAnimator.SetBool("ReceiveDamage", true);
                 MovementIn2D.Stop(_movData);
                 Vector3 attackDirection = collision.transform.forward;
+                MovementIn2D.Bounce(_movData, attackDirection);
 
-                _movData.TrayectoryData.Direction = attackDirection;
-                _movData.PositionData.TargetPosition = collision.transform.position;
-                _movData.PositionData.DestinyPosition = collision.transform.position;
-                _movData.PositionData.DestinyPosition += _movData.TrayectoryData.Direction;
-                Invoke(nameof(FinishReceivingDamage), 2f);
+                Invoke(nameof(FinishReceivingDamage), 1f);
 
                 float damage = collision.gameObject.GetComponent<AttackData>().Damage;
                 _mobData.CurrentHealth -= damage;
 
-                if (_mobData.CurrentHealth <= 0) Die?.Invoke(gameObject);
+                if (_mobData.CurrentHealth <= 0) Die?.Invoke(gameObject, _entityAnimator);
             }
         }
 
         private void FinishReceivingDamage()
         {
-            _movData.IsMoving = true;
+            _entityAnimator.SetBool("ReceiveDamage", false);
+            _movData.IsStunned = false;
         }
     }
 }

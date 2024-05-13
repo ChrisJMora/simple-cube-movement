@@ -12,38 +12,41 @@ namespace Assets.Scripts.World.Entities.Mobs.Behaviours.Attack
         [SerializeField] private MobProperties _mobProperties;
         [SerializeField] private MovementData _movData;
         [SerializeField] private GameObject _objectReference;
+        [SerializeField] private Animator _attackAnimator;
         [SerializeField] [ReadOnly] private GameObject _instantiateObject;
+        [SerializeField] [ReadOnly] private Vector3 _targetPosition;
 
         private float _coolDownAttackTimer;
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && Time.time >= _coolDownAttackTimer)
+            if (Input.GetMouseButtonDown(0))
             {
                 Attack();
-                _coolDownAttackTimer = Time.time + _mobProperties.AttackSpeed;
             }
         }
 
         private void Attack()
         {
             MovementIn2D.Stop(_movData);
-            Vector3 targetPosition = _movData.PositionData.TargetPosition + transform.forward;
-            StartAttack(targetPosition);
+            _targetPosition = _movData.PositionData.TargetPosition + transform.forward;
+            _attackAnimator.SetBool("Attack", true);
+            StartAttack();
             Invoke(nameof(FinishAttack), _mobProperties.AttackSpeed);
         }
 
-        private void StartAttack(Vector3 targetPosition)
+        private void StartAttack()
         {
             AttackData attackData = _objectReference.GetComponent<AttackData>();
             attackData.Damage = _mobProperties.Damage;
-            _instantiateObject = Instantiate(_objectReference, targetPosition, transform.rotation);
+            _instantiateObject = Instantiate(_objectReference, _targetPosition, transform.rotation);
         }
 
         private void FinishAttack()
         {
+            _attackAnimator.SetBool("Attack", false);
             Destroy(_instantiateObject);
-            _movData.IsMoving = true;
+            _movData.IsStunned = false;
         }
     }
 }
